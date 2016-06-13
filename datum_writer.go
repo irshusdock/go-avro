@@ -534,7 +534,7 @@ func (writer *GenericDatumWriter) isWritableAs(v interface{}, s Schema) bool {
 }
 
 func (writer *GenericDatumWriter) writeFixed(v interface{}, enc Encoder, s Schema) error {
-	return writer.writeBytes(v, enc)
+	return writer.writeRaw(v, enc)
 }
 
 func (writer *GenericDatumWriter) writeRecord(v interface{}, enc Encoder, s Schema) error {
