@@ -544,6 +544,9 @@ func (writer *GenericDatumWriter) writeFixed(v interface{}, enc Encoder, s Schem
 	if ok !- true{
 		return errors.New("Input not of type fixed ([]byte)")
 	}
+	if len(v.([]byte)) != fs.Size{
+		return errors.New("Expected []byte of size " + fs.Size)
+	}
 	// Write the raw bytes. The length is known by the schema
 	enc.WriteRaw(v.([]byte))
 	return nil
