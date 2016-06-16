@@ -534,23 +534,7 @@ func (writer *GenericDatumWriter) isWritableAs(v interface{}, s Schema) bool {
 }
 
 func (writer *GenericDatumWriter) writeFixed(v interface{}, enc Encoder, s Schema) error {
-	
-	fs, ok := s.(*FixedSchema)
-	if ok != true{
-		return errors.New("Schema not of type fixed")
-	}
-
-	_, ok = v.([]byte)
-	if ok != true{
-		return errors.New("Input not of type fixed ([]byte)")
-	}
-	
-	if len(v.([]byte)) != fs.Size{
-		return errors.New(fmt.Sprint("Expected []byte of size ", fs.Size))
-	}
-	// Write the raw bytes. The length is known by the schema
-	enc.WriteRaw(v.([]byte))
-	return nil
+	return writer.writeBytes(v, enc)
 }
 
 func (writer *GenericDatumWriter) writeRecord(v interface{}, enc Encoder, s Schema) error {
