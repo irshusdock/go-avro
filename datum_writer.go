@@ -540,8 +540,8 @@ func (writer *GenericDatumWriter) writeFixed(v interface{}, enc Encoder, s Schem
 		return errors.New("Schema not of type fixed")
 	}
 
-	_, ok := v.([]byte)
-	if ok !- true{
+	_, ok = v.([]byte)
+	if ok != true{
 		return errors.New("Input not of type fixed ([]byte)")
 	}
 	
