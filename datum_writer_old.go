@@ -1,4 +1,4 @@
-/*package avro
+package avro/*
 
 import (
 	"errors"
