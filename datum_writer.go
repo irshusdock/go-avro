@@ -316,6 +316,10 @@ func (writer *GenericDatumWriter) write(v interface{}, enc Encoder, s Schema) er
 		return writer.writeRecord(v, enc, s)
 	case Recursive:
 		return writer.writeRecord(v, enc, s.(*RecursiveSchema).Actual)
+	default:
+		fmt.Println("=======")
+		fmt.Println(s)
+		fmt.Printf("\n%T\n", s)
 	}
 
 	return nil
